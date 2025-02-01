@@ -19,6 +19,27 @@ local Section = Tab:AddSection({
 })
 
 Tab:AddToggle({
+	Name = "Auto replay stage 1",
+	Default = false,
+	Callback = function(Value)
+		getgenv().AutoSpawn = Value
+		while getgenv().AutoSpawn do
+			local args = {
+	"Chapter1",
+	1,
+	2,
+	1,
+	false,
+	{},
+	false
+}
+game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("RemoteFunction"):WaitForChild("StartBattle"):InvokeServer(unpack(args))
+			wait(0.5)
+		end
+	end    
+})
+
+Tab:AddToggle({
 	Name = "Auto spawn unit 1",
 	Default = false,
 	Callback = function(Value)
