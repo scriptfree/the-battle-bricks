@@ -19,14 +19,18 @@ local Section = Tab:AddSection({
 })
 
 Tab:AddToggle({
-	Name = "Auto replay stage 1",
+	Name = "Auto replay stage 2",
 	Default = false,
 	Callback = function(Value)
 		getgenv().AutoSpawn = Value
-		while getgenv().AutoSpawn do
-			local args = {
+		
+		if Value then
+			task.spawn(function()
+				while getgenv().AutoSpawn do
+					local success, err = pcall(function()
+						local args = {
 	"Chapter1",
-	1,
+	2,
 	2,
 	1,
 	false,
@@ -34,7 +38,15 @@ Tab:AddToggle({
 	false
 }
 game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("RemoteFunction"):WaitForChild("StartBattle"):InvokeServer(unpack(args))
-			wait(0.5)
+					end)
+					
+					if not success then
+						warn("Error in AutoSpawn:", err)
+					end
+
+					wait(1) -- Adjust the interval as needed
+				end
+			end)
 		end
 	end    
 })
@@ -44,27 +56,48 @@ Tab:AddToggle({
 	Default = false,
 	Callback = function(Value)
 		getgenv().AutoSpawn = Value
-		while getgenv().AutoSpawn do
-			local args = {
-				"Slot1"
-			}
-			game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("RemoteFunction"):WaitForChild("PlayerSpawn"):InvokeServer(unpack(args))
-			wait(0.5)
+		
+		if Value then
+			task.spawn(function()
+				while getgenv().AutoSpawn do
+					local success, err = pcall(function()
+						local args = { "Slot1" }
+						game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("RemoteFunction"):WaitForChild("PlayerSpawn"):InvokeServer(unpack(args))
+					end)
+					
+					if not success then
+						warn("Error in AutoSpawn:", err)
+					end
+
+					wait(0.5) -- Adjust the interval as needed
+				end
+			end)
 		end
 	end    
 })
+
 
 Tab:AddToggle({
 	Name = "Auto spawn unit 2",
 	Default = false,
 	Callback = function(Value)
 		getgenv().AutoSpawn = Value
-		while getgenv().AutoSpawn do
-			local args = {
-				"Slot2"
-			}
-			game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("RemoteFunction"):WaitForChild("PlayerSpawn"):InvokeServer(unpack(args))
-			wait(0.5)
+		
+		if Value then
+			task.spawn(function()
+				while getgenv().AutoSpawn do
+					local success, err = pcall(function()
+						local args = { "Slot2" }
+						game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("RemoteFunction"):WaitForChild("PlayerSpawn"):InvokeServer(unpack(args))
+					end)
+					
+					if not success then
+						warn("Error in AutoSpawn:", err)
+					end
+
+					wait(0.5) -- Adjust the interval as needed
+				end
+			end)
 		end
 	end    
 })
@@ -74,12 +107,22 @@ Tab:AddToggle({
 	Default = false,
 	Callback = function(Value)
 		getgenv().AutoSpawn = Value
-		while getgenv().AutoSpawn do
-			local args = {
-				"Slot3"
-			}
-			game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("RemoteFunction"):WaitForChild("PlayerSpawn"):InvokeServer(unpack(args))
-			wait(0.5)
+		
+		if Value then
+			task.spawn(function()
+				while getgenv().AutoSpawn do
+					local success, err = pcall(function()
+						local args = { "Slot3" }
+						game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("RemoteFunction"):WaitForChild("PlayerSpawn"):InvokeServer(unpack(args))
+					end)
+					
+					if not success then
+						warn("Error in AutoSpawn:", err)
+					end
+
+					wait(0.5) -- Adjust the interval as needed
+				end
+			end)
 		end
 	end    
 })
@@ -89,12 +132,22 @@ Tab:AddToggle({
 	Default = false,
 	Callback = function(Value)
 		getgenv().AutoSpawn = Value
-		while getgenv().AutoSpawn do
-			local args = {
-				"Slot4"
-			}
-			game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("RemoteFunction"):WaitForChild("PlayerSpawn"):InvokeServer(unpack(args))
-			wait(0.5)
+		
+		if Value then
+			task.spawn(function()
+				while getgenv().AutoSpawn do
+					local success, err = pcall(function()
+						local args = { "Slot4" }
+						game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("RemoteFunction"):WaitForChild("PlayerSpawn"):InvokeServer(unpack(args))
+					end)
+					
+					if not success then
+						warn("Error in AutoSpawn:", err)
+					end
+
+					wait(0.5) -- Adjust the interval as needed
+				end
+			end)
 		end
 	end    
 })
@@ -104,27 +157,49 @@ Tab:AddToggle({
 	Default = false,
 	Callback = function(Value)
 		getgenv().AutoSpawn = Value
-		while getgenv().AutoSpawn do
-			local args = {
+		
+		if Value then
+			task.spawn(function()
+				while getgenv().AutoSpawn do
+					local success, err = pcall(function()
+						local args = {
 	"Cannon"
 }
 game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("RemoteFunction"):WaitForChild("PlayerSpawn"):InvokeServer(unpack(args))
-			wait(0.5)
+					
+					if not success then
+						warn("Error in AutoSpawn:", err)
+					end
+
+					wait(1) -- Adjust the interval as needed
+				end
+			end)
 		end
 	end    
 })
 
-Tab:AddToggle({
+		Tab:AddToggle({
 	Name = "Auto upgrade bank",
 	Default = false,
 	Callback = function(Value)
 		getgenv().AutoSpawn = Value
-		while getgenv().AutoSpawn do
-			local args = {
+		
+		if Value then
+			task.spawn(function()
+				while getgenv().AutoSpawn do
+					local success, err = pcall(function()
+						local args = {
 	"Bank"
 }
 game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("RemoteFunction"):WaitForChild("PlayerSpawn"):InvokeServer(unpack(args))
-			wait(0.5)
+					
+					if not success then
+						warn("Error in AutoSpawn:", err)
+					end
+
+					wait(1) -- Adjust the interval as needed
+				end
+			end)
 		end
 	end    
 })
