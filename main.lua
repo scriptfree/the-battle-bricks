@@ -1,6 +1,8 @@
+-- Load OrionLib (make sure this is loaded first)
 local OrionLib = loadstring(game:HttpGet(('https://pastebin.com/raw/vaRMeAp8')))()
 local Window = OrionLib:MakeWindow({Name = "The Battle Bricks", HidePremium = false, SaveConfig = false, ConfigFolder = "OrionTest"})
 
+-- Show initial notification
 OrionLib:MakeNotification({
 	Name = "HEY!",
 	Content = "Script loaded successfully.",
@@ -8,17 +10,19 @@ OrionLib:MakeNotification({
 	Time = 5
 })
 
+-- Create the 'Main' tab
 local Tab = Window:MakeTab({
 	Name = "Main",
 	Icon = "rbxassetid://4034483344",
 	PremiumOnly = false
 })
 
+-- Add a section under the 'Main' tab
 local Section = Tab:AddSection({
 	Name = "Autofarm"
 })
 
--- Dropdown to select chapter
+-- Add a dropdown for selecting chapter
 Tab:AddDropdown({
 	Name = "Chapter", 
 	Default = "Chapter1", 
@@ -28,21 +32,17 @@ Tab:AddDropdown({
 	end    
 })
 
--- Dropdown to select stage (1-30)
-Tab:AddDropdown({
+-- Add a Textbox for selecting the stage
+Tab:AddTextbox({
 	Name = "Stage", 
 	Default = "1", 
-	Options = {
-		"1", "2", "3", "4", "5", "6", "7", "8", "9", "10",
-		"11", "12", "13", "14", "15", "16", "17", "18", "19", "20",
-		"21", "22", "23", "24", "25", "26", "27", "28", "29", "30"
-	}, 
+	TextDisappear = false, 
 	Callback = function(Value)
-		getgenv().SelectedStage = tonumber(Value) -- Convert to number for safety
-	end    
+		getgenv().SelectedStage = tonumber(Value) -- Ensure the value is treated as a number
+	end	  
 })
 
--- Auto replay stage
+-- Add toggle for auto replay stage
 Tab:AddToggle({
 	Name = "Auto replay stage",
 	Default = false,
@@ -54,14 +54,15 @@ Tab:AddToggle({
 				while getgenv().AutoReplay do
 					local success, err = pcall(function()
 						local args = {
-							getgenv().SelectedChapter or "Chapter1",  -- Use selected chapter, default to Chapter1
-							getgenv().SelectedStage or 1,             -- Use selected stage, default to 1
+							getgenv().SelectedChapter or "Chapter1",  -- Default to Chapter1 if no selection
+							getgenv().SelectedStage or 1,             -- Default to Stage 1 if no input
 							2,
 							1,
 							false,
 							{},
 							false
 						}
+						-- Trigger battle start event
 						game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("RemoteFunction"):WaitForChild("StartBattle"):InvokeServer(unpack(args))
 					end)
 					
@@ -69,13 +70,14 @@ Tab:AddToggle({
 						warn("Error in AutoReplay:", err)
 					end
 
-					wait(1) -- Adjust the interval as needed
+					wait(1) -- Wait before trying again
 				end
 			end)
 		end
 	end    
 })
 
+-- Add toggle for auto spawn unit 1
 Tab:AddToggle({
 	Name = "Auto spawn unit 1",
 	Default = false,
@@ -101,7 +103,7 @@ Tab:AddToggle({
 	end    
 })
 
-
+-- Add toggle for auto spawn unit 2
 Tab:AddToggle({
 	Name = "Auto spawn unit 2",
 	Default = false,
@@ -127,6 +129,7 @@ Tab:AddToggle({
 	end    
 })
 
+-- Add toggle for auto spawn unit 3
 Tab:AddToggle({
 	Name = "Auto spawn unit 3",
 	Default = false,
@@ -152,6 +155,7 @@ Tab:AddToggle({
 	end    
 })
 
+-- Add toggle for auto spawn unit 4
 Tab:AddToggle({
 	Name = "Auto spawn unit 4",
 	Default = false,
@@ -177,6 +181,7 @@ Tab:AddToggle({
 	end    
 })
 
+-- Add toggle for auto fire canon
 Tab:AddToggle({
 	Name = "Auto fire canon",
 	Default = false,
@@ -187,10 +192,9 @@ Tab:AddToggle({
 			task.spawn(function()
 				while getgenv().AutoSpawn do
 					local success, err = pcall(function()
-						local args = {
-	"Cannon"
-}
-game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("RemoteFunction"):WaitForChild("PlayerSpawn"):InvokeServer(unpack(args))
+						local args = { "Cannon" }
+						game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("RemoteFunction"):WaitForChild("PlayerSpawn"):InvokeServer(unpack(args))
+					end)
 					
 					if not success then
 						warn("Error in AutoSpawn:", err)
@@ -203,7 +207,8 @@ game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("Remote
 	end    
 })
 
-		Tab:AddToggle({
+-- Add toggle for auto upgrade bank
+Tab:AddToggle({
 	Name = "Auto upgrade bank",
 	Default = false,
 	Callback = function(Value)
@@ -213,10 +218,9 @@ game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("Remote
 			task.spawn(function()
 				while getgenv().AutoSpawn do
 					local success, err = pcall(function()
-						local args = {
-	"Bank"
-}
-game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("RemoteFunction"):WaitForChild("PlayerSpawn"):InvokeServer(unpack(args))
+						local args = { "Bank" }
+						game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("RemoteFunction"):WaitForChild("PlayerSpawn"):InvokeServer(unpack(args))
+					end)
 					
 					if not success then
 						warn("Error in AutoSpawn:", err)
@@ -229,4 +233,5 @@ game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("Remote
 	end    
 })
 
+-- Initialize the UI
 OrionLib:Init()
