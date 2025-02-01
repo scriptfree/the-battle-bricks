@@ -19,9 +19,62 @@ local Section = Tab:AddSection({
 })
 
 Tab:AddToggle({
-	Name = "This is a toggle!",
+	Name = "Auto spawn unit 1",
 	Default = false,
 	Callback = function(Value)
-		print(Value)
+		getgenv().AutoSpawn = Value
+		while getgenv().AutoSpawn do
+			local args = {
+				"Slot1"
+			}
+			game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("RemoteFunction"):WaitForChild("PlayerSpawn"):InvokeServer(unpack(args))
+			wait(0.5)
+		end
 	end    
 })
+
+Tab:AddToggle({
+	Name = "Auto spawn unit 2",
+	Default = false,
+	Callback = function(Value)
+		getgenv().AutoSpawn = Value
+		while getgenv().AutoSpawn do
+			local args = {
+				"Slot2"
+			}
+			game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("RemoteFunction"):WaitForChild("PlayerSpawn"):InvokeServer(unpack(args))
+			wait(0.5)
+		end
+	end    
+})
+
+Tab:AddToggle({
+	Name = "Auto spawn unit 3",
+	Default = false,
+	Callback = function(Value)
+		getgenv().AutoSpawn = Value
+		while getgenv().AutoSpawn do
+			local args = {
+				"Slot3"
+			}
+			game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("RemoteFunction"):WaitForChild("PlayerSpawn"):InvokeServer(unpack(args))
+			wait(0.5)
+		end
+	end    
+})
+
+Tab:AddToggle({
+	Name = "Auto spawn unit 4",
+	Default = false,
+	Callback = function(Value)
+		getgenv().AutoSpawn = Value
+		while getgenv().AutoSpawn do
+			local args = {
+				"Slot4"
+			}
+			game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("RemoteFunction"):WaitForChild("PlayerSpawn"):InvokeServer(unpack(args))
+			wait(0.5)
+		end
+	end    
+})
+
