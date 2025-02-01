@@ -34,12 +34,21 @@ Tab:AddDropdown({
 
 -- Add a Textbox for selecting the stage
 Tab:AddTextbox({
-	Name = "Stage", 
-	Default = "1", 
-	TextDisappear = false, 
-	Callback = function(Value)
-		getgenv().SelectedStage = tonumber(Value) -- Ensure the value is treated as a number
-	end	  
+    Name = "Stage", 
+    Default = "1", 
+    TextDisappear = false, 
+    Callback = function(Value)
+        -- Check if the entered value is a number
+        local num = tonumber(Value)
+        if num and num >= 1 and num <= 30 then
+            -- If valid, set the stage to the entered number
+            getgenv().SelectedStage = num
+        else
+            -- If invalid, print an error message and reset to default
+            warn("Please enter a number between 1 and 30.")
+            getgenv().SelectedStage = 1 -- Default to 1 if invalid
+        end
+    end  
 })
 
 -- Add toggle for auto replay stage
