@@ -78,3 +78,32 @@ Tab:AddToggle({
 	end    
 })
 
+Tab:AddToggle({
+	Name = "Auto fire canon",
+	Default = false,
+	Callback = function(Value)
+		getgenv().AutoSpawn = Value
+		while getgenv().AutoSpawn do
+			local args = {
+	"Cannon"
+}
+game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("RemoteFunction"):WaitForChild("PlayerSpawn"):InvokeServer(unpack(args))
+			wait(0.5)
+		end
+	end    
+})
+
+Tab:AddToggle({
+	Name = "Auto upgrade bank",
+	Default = false,
+	Callback = function(Value)
+		getgenv().AutoSpawn = Value
+		while getgenv().AutoSpawn do
+			local args = {
+	"Bank"
+}
+game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("RemoteFunction"):WaitForChild("PlayerSpawn"):InvokeServer(unpack(args))
+			wait(0.5)
+		end
+	end    
+})
