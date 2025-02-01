@@ -4,13 +4,13 @@ local Window = OrionLib:MakeWindow({Name = "The Battle Bricks", HidePremium = fa
 OrionLib:MakeNotification({
 	Name = "HEY!",
 	Content = "Script loaded successfully.",
-	Image = "rbxassetid://4483345998",
+	Image = "rbxassetid://17829956110",
 	Time = 5
 })
 
 local Tab = Window:MakeTab({
 	Name = "Main",
-	Icon = "rbxassetid://4483345998",
+	Icon = "rbxassetid://4034483344",
 	PremiumOnly = false
 })
 
