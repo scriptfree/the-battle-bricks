@@ -353,7 +353,7 @@ local Section = Tab:AddSection({
     Name = "Developer"
 })
 
-Tab:AddLabel("Made by : dogefriend")
+Tab:AddLabel("Made by : nnty.")
 
 Tab:AddButton({
     Name = "Close UI",
