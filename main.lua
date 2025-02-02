@@ -86,6 +86,58 @@ Tab:AddToggle({
 	end    
 })
 
+-- Add toggle for auto fire canon
+Tab:AddToggle({
+	Name = "Auto fire canon",
+	Default = false,
+	Callback = function(Value)
+		getgenv().AutoSpawn = Value
+		
+		if Value then
+			task.spawn(function()
+				while getgenv().AutoSpawn do
+					local success, err = pcall(function()
+						local args = { "Cannon" }
+						game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("RemoteFunction"):WaitForChild("PlayerSpawn"):InvokeServer(unpack(args))
+					end)
+					
+					if not success then
+						warn("Error in AutoSpawn:", err)
+					end
+
+					wait(1) -- Adjust the interval as needed
+				end
+			end)
+		end
+	end    
+})
+
+-- Add toggle for auto upgrade bank
+Tab:AddToggle({
+	Name = "Auto upgrade bank",
+	Default = false,
+	Callback = function(Value)
+		getgenv().AutoSpawn = Value
+		
+		if Value then
+			task.spawn(function()
+				while getgenv().AutoSpawn do
+					local success, err = pcall(function()
+						local args = { "Bank" }
+						game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("RemoteFunction"):WaitForChild("PlayerSpawn"):InvokeServer(unpack(args))
+					end)
+					
+					if not success then
+						warn("Error in AutoSpawn:", err)
+					end
+
+					wait(1) -- Adjust the interval as needed
+				end
+			end)
+		end
+	end    
+})
+
 -- Add toggle for auto spawn unit 1
 Tab:AddToggle({
 	Name = "Auto spawn unit 1",
@@ -190,9 +242,8 @@ Tab:AddToggle({
 	end    
 })
 
--- Add toggle for auto fire canon
 Tab:AddToggle({
-	Name = "Auto fire canon",
+	Name = "Auto spawn unit 5",
 	Default = false,
 	Callback = function(Value)
 		getgenv().AutoSpawn = Value
@@ -201,7 +252,7 @@ Tab:AddToggle({
 			task.spawn(function()
 				while getgenv().AutoSpawn do
 					local success, err = pcall(function()
-						local args = { "Cannon" }
+						local args = { "Slot5" }
 						game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("RemoteFunction"):WaitForChild("PlayerSpawn"):InvokeServer(unpack(args))
 					end)
 					
@@ -209,16 +260,15 @@ Tab:AddToggle({
 						warn("Error in AutoSpawn:", err)
 					end
 
-					wait(1) -- Adjust the interval as needed
+					wait(0.5) -- Adjust the interval as needed
 				end
 			end)
 		end
 	end    
 })
 
--- Add toggle for auto upgrade bank
 Tab:AddToggle({
-	Name = "Auto upgrade bank",
+	Name = "Auto spawn unit 6",
 	Default = false,
 	Callback = function(Value)
 		getgenv().AutoSpawn = Value
@@ -227,7 +277,7 @@ Tab:AddToggle({
 			task.spawn(function()
 				while getgenv().AutoSpawn do
 					local success, err = pcall(function()
-						local args = { "Bank" }
+						local args = { "Slot6" }
 						game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("RemoteFunction"):WaitForChild("PlayerSpawn"):InvokeServer(unpack(args))
 					end)
 					
@@ -235,7 +285,57 @@ Tab:AddToggle({
 						warn("Error in AutoSpawn:", err)
 					end
 
-					wait(1) -- Adjust the interval as needed
+					wait(0.5) -- Adjust the interval as needed
+				end
+			end)
+		end
+	end    
+})
+
+Tab:AddToggle({
+	Name = "Auto spawn unit 7",
+	Default = false,
+	Callback = function(Value)
+		getgenv().AutoSpawn = Value
+		
+		if Value then
+			task.spawn(function()
+				while getgenv().AutoSpawn do
+					local success, err = pcall(function()
+						local args = { "Slot7" }
+						game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("RemoteFunction"):WaitForChild("PlayerSpawn"):InvokeServer(unpack(args))
+					end)
+					
+					if not success then
+						warn("Error in AutoSpawn:", err)
+					end
+
+					wait(0.5) -- Adjust the interval as needed
+				end
+			end)
+		end
+	end    
+})
+
+Tab:AddToggle({
+	Name = "Auto spawn unit 8",
+	Default = false,
+	Callback = function(Value)
+		getgenv().AutoSpawn = Value
+		
+		if Value then
+			task.spawn(function()
+				while getgenv().AutoSpawn do
+					local success, err = pcall(function()
+						local args = { "Slot8" }
+						game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("RemoteFunction"):WaitForChild("PlayerSpawn"):InvokeServer(unpack(args))
+					end)
+					
+					if not success then
+						warn("Error in AutoSpawn:", err)
+					end
+
+					wait(0.5) -- Adjust the interval as needed
 				end
 			end)
 		end
