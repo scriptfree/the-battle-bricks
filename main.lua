@@ -4,8 +4,8 @@ local Window = OrionLib:MakeWindow({Name = "The Battle Bricks", HidePremium = fa
 
 -- Show initial notification
 OrionLib:MakeNotification({
-	Name = "HEY!",
-	Content = "Script loaded successfully.",
+	Name = "Welcome!",
+	Content = "Script loaded successfully! Thank you for using my script.",
 	Image = "rbxassetid://17829956110",
 	Time = 5
 })
@@ -342,5 +342,23 @@ Tab:AddToggle({
 	end    
 })
 
--- Initialize the UI
+local Tab = Window:MakeTab({
+	Name = "Credits",
+	Icon = "rbxassetid://18719810809",
+	PremiumOnly = false
+})
+
+local Section = Tab:AddSection({
+	Name = "Developer"
+})
+
+Tab:AddLabel("Made by : dogefriend")
+
+Tab:AddButton({
+	Name = "Close UI",
+	Callback = function()
+      		OrionLib:Destroy()
+  	end    
+})
+
 OrionLib:Init()
