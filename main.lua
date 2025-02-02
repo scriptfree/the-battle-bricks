@@ -88,7 +88,7 @@ Tab:AddToggle({
 
 -- Add toggle for auto fire canon
 Tab:AddToggle({
-    Name = "Auto fire canon",
+    Name = "Auto fire cannon",
     Default = false,
     Callback = function(Value)
         getgenv().AutoFireCannon = Value
