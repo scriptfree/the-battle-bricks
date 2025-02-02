@@ -8,7 +8,7 @@ Heres a very simple exp farm method that gets you 2,188,800 (2.1 Million) exp pe
 
 `Unit(s) Required:` <a href="https://the-battle-bricks.fandom.com/wiki/Kamikaze_Battler">Bomb Battler (Kamikaze Battler)</a>
 
-`Unit Level Required:` Bomb Battler must be level 13+ and must use form 2.
+`Unit Level Required:` Bomb Battler must be level 13+ and must use his 2nd form.
 
 `Chapter:` 1
 
